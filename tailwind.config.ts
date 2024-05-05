@@ -17,6 +17,19 @@ const config = {
         "2xl": "1400px",
       },
     },
+    spacing: {
+      1: "4px",
+      2: "8px",
+      3: "12px",
+      4: "16px",
+      5: "20px",
+      6: "24px",
+      7: "28px",
+      8: "32px",
+      9: "36px",
+      10: "40px",
+      11: "44px",
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -25,12 +38,33 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "var(--primary)",
+          100: "var(--primary-foreground)",
+          300: "var(--primary-300)",
+          400: "var(--primary-400)",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "var(--secondary)",
+          100: "var(--secondary-foreground)",
+        },
+        grey: {
+          DEFAULT: "#F8FAFC",
+          200: "var(--grey-200)",
+          300: "var(--grey-300)",
+          400: "var(--grey-400)",
+          500: "var(--grey-500)",
+        },
+        info: {
+          DEFAULT: "var(--info)",
+        },
+        success: {
+          DEFAULT: "var(--success)",
+        },
+        warning: {
+          DEFAULT: "var(--warning)",
+        },
+        danger: {
+          DEFAULT: "var(--danger)",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
