@@ -6,6 +6,7 @@
     "semi": ["warn", "always"],
     "space-before-blocks": ["error", "always"],
     "object-curly-spacing": ["error", "always"],
-    "comma-spacing": ["warn", { "before": false, "after": true }]
+    "comma-spacing": ["warn", { "before": false, "after": true }],
+    "react/prop-types": "off"
   }
 }
