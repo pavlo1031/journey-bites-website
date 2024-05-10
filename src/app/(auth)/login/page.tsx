@@ -41,7 +41,7 @@ export default function Login() {
           <h2>登入</h2>
           <div>
             新用戶？
-            <Link href="/resgister" className="text-blue-500 underline">快速註冊</Link>
+            <Link href="/register" className="text-blue-500 underline">快速註冊</Link>
           </div>
         </div>
         <div className="flex flex-col gap-5 my-5">
