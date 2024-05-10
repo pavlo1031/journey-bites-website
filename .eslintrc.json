@@ -3,6 +3,9 @@
     "plugin:react/recommended", "plugin:react-hooks/recommended", "plugin:react/jsx-runtime"],
   "rules": {
     "quotes": ["warn", "single"],
-    "semi": ["warn", "always"]
+    "semi": ["warn", "always"],
+    "space-before-blocks": ["error", "always"],
+    "object-curly-spacing": ["error", "always"],
+    "comma-spacing": ["warn", { "before": false, "after": true }]
   }
 }
