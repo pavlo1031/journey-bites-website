@@ -8,8 +8,7 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import InputField from '@/components/custom/InputField';
-import { Eye, EyeOff } from 'lucide-react';
-import { InputType } from '@/types';
+import PasswordInput from '@/components/custom/PasswordInput';
 import { ApiManager } from '@/lib/ApiManager';
 import { PASSWORD_VALIDATION } from '@/constants';
 
@@ -29,8 +28,6 @@ const formSchema = z.object({
 
 
 export default function EmailRegister() {
-  const [passwordInputType, setPasswordInputType] = useState<InputType>(InputType.PASSWORD);
-  const [confirmPasswordInputType, setConfirmPasswordInputType] = useState<InputType>(InputType.PASSWORD);
   const [isLoading, setIsLoading] = useState(false);
   const form = useForm<FieldValues>({
     resolver: zodResolver(formSchema),
@@ -43,15 +40,7 @@ export default function EmailRegister() {
     },
   });
   const { control, handleSubmit, formState: { isValid } } = form;
-
   const buttonDisabled = Boolean(isLoading || !isValid);
-
-  function togglePasswordInputType({ confirm }: { confirm: boolean }) {
-    if (confirm) {
-      return setConfirmPasswordInputType(confirmPasswordInputType === InputType.PASSWORD ? InputType.TEXT : InputType.PASSWORD);
-    }
-    setPasswordInputType(passwordInputType === InputType.PASSWORD ? InputType.TEXT : InputType.PASSWORD);
-  }
  
   async function onSubmit({ email, password }: FieldValues) {
     setIsLoading(true);
@@ -86,23 +75,8 @@ export default function EmailRegister() {
             label="帳號"
             placeholder="請輸入您的 Email"
           />
-          <InputField
-            control={control}
-            name="password"
-            label="密碼"
-            inputType={passwordInputType}
-            endIcon={passwordInputType === 'password' ? EyeOff : Eye}
-            iconAction={() => togglePasswordInputType({ confirm: false })}
-            formDescription="請輸入 6 到 20 位英文及數字"
-          />
-          <InputField
-            control={control}
-            name="confirmPassword"
-            label="再次輸入密碼"
-            inputType={confirmPasswordInputType}
-            endIcon={confirmPasswordInputType === 'password' ? EyeOff : Eye}
-            iconAction={() => togglePasswordInputType({ confirm: true })}
-          />
+          <PasswordInput control={control} name="password" formDescription="請輸入 6 到 20 位英文及數字"/>
+          <PasswordInput control={control} name="confirmPassword" label="再次輸入密碼"/>
           <Button type="submit" className="w-full" disabled={buttonDisabled} isLoading={isLoading}>註冊</Button>
         </form>
       </Form>

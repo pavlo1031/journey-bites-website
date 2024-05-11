@@ -9,8 +9,7 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import InputField from '@/components/custom/InputField';
-import { Eye, EyeOff } from 'lucide-react';
-import { InputType } from '@/types';
+import PasswordInput from '@/components/custom/PasswordInput';
 import { ApiManager } from '@/lib/ApiManager';
 import { PASSWORD_VALIDATION } from '@/constants';
 
@@ -21,7 +20,6 @@ const formSchema = z.object({
 
 
 export default function Login() {
-  const [passwordInputType, setPasswordInputType] = useState<InputType>(InputType.PASSWORD);
   const [isLoading, setIsLoading] = useState(false);
   const form = useForm<FieldValues>({
     resolver: zodResolver(formSchema),
@@ -34,10 +32,6 @@ export default function Login() {
   const router = useRouter();
   const buttonDisabled = Boolean(isLoading || !isValid);
 
-  function togglePasswordInputType() {
-    setPasswordInputType(passwordInputType === InputType.PASSWORD ? InputType.TEXT : InputType.PASSWORD);
-  }
- 
   async function onSubmit({ email, password }: FieldValues) {
     setIsLoading(true);
     try {
@@ -70,16 +64,7 @@ export default function Login() {
             label="帳號"
             placeholder="請輸入你的 Email"
           />
-          <InputField
-            control={control}
-            name="password"
-            label="密碼"
-            placeholder="請輸入你的密碼"
-            inputType={passwordInputType}
-            endIcon={passwordInputType === 'password' ? EyeOff : Eye}
-            iconAction={togglePasswordInputType}
-            formDescription="請輸入 6 到 20 位英文及數字"
-          />
+          <PasswordInput control={control} name="password" formDescription="請輸入 6 到 20 位英文及數字"/>
           <Button type="submit" className="w-full" disabled={buttonDisabled} isLoading={isLoading}>登入</Button>
         </form>
       </Form>
