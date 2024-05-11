@@ -74,6 +74,7 @@ export default function Login() {
             name="password"
             label="密碼"
             placeholder="請輸入你的密碼"
+            inputType={passwordInputType}
             endIcon={passwordInputType === 'password' ? EyeOff : Eye}
             iconAction={togglePasswordInputType}
             formDescription="請輸入 6 到 20 位英文及數字"
