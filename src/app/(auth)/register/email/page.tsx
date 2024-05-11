@@ -17,14 +17,15 @@ const formSchema = z.object({
   email: z.string().email({ message: '非 Email 格式，請重新輸入' }),
   password: PASSWORD_VALIDATION,
   confirmPassword: PASSWORD_VALIDATION,
-}).superRefine(({ confirmPassword, password }, ctx) => {
-  if (confirmPassword !== password) {
-    ctx.addIssue({
-      code: 'custom',
-      message: '密碼輸入不相符，請重新輸入',
-    });
+}).refine(
+  (values) => {
+    return values.password === values.confirmPassword;
+  },
+  {
+    message: '密碼輸入不相符，請重新輸入',
+    path: ['confirmPassword'],
   }
-});
+);
 
 
 export default function EmailRegister() {
