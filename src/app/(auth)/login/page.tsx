@@ -11,15 +11,17 @@ import InputField from '@/components/custom/InputField';
 import { Eye, EyeOff } from 'lucide-react';
 import { InputType } from '@/types';
 import { ApiManager } from '@/lib/ApiManager';
+import { PASSWORD_VALIDATION } from '@/constants';
 
 const formSchema = z.object({
   email: z.string().email({ message: '非 Email 格式，請重新輸入' }),
-  password: z.string().regex(/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,20}$/, { message: '密碼不符規則，請再輸入一次' }),
+  password: PASSWORD_VALIDATION,
 });
 
 
 export default function Login() {
   const [passwordInputType, setPasswordInputType] = useState<InputType>(InputType.PASSWORD);
+  const [isLoading, setIsLoading] = useState(false);
   const form = useForm<FieldValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -27,19 +29,23 @@ export default function Login() {
       password: '',
     },
   });
-  const { control, handleSubmit } = form;
+  const { control, handleSubmit, formState: { isValid } } = form;
   const router = useRouter();
+  const buttonDisabled = Boolean(isLoading || !isValid);
 
   function togglePasswordInputType() {
     setPasswordInputType(passwordInputType === InputType.PASSWORD ? InputType.TEXT : InputType.PASSWORD);
   }
  
   async function onSubmit({ email, password }: FieldValues) {
+    setIsLoading(true);
     try {
       await ApiManager.login({ email, password }); 
       router.push('/');
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   }
   return (
@@ -56,7 +62,7 @@ export default function Login() {
         <Button variant='outline'>使用 Facebook 登入</Button>
       </div>
       <Form {...form}>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <InputField
             control={control}
             name="email"
@@ -72,7 +78,7 @@ export default function Login() {
             iconAction={togglePasswordInputType}
             formDescription="請輸入 6 到 20 位英文及數字"
           />
-          <Button type="submit" className="w-full">登入</Button>
+          <Button type="submit" className="w-full" disabled={buttonDisabled} isLoading={isLoading}>登入</Button>
         </form>
       </Form>
     </>
