@@ -8,6 +8,7 @@ import { type FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
+import { useToast } from '@/components/ui/use-toast';
 import InputField from '@/components/custom/InputField';
 import PasswordInput from '@/components/custom/PasswordInput';
 import { ApiManager } from '@/lib/ApiManager';
@@ -21,6 +22,7 @@ const formSchema = z.object({
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
   const form = useForm<FieldValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -38,7 +40,8 @@ export default function Login() {
       await ApiManager.login({ email, password }); 
       router.push('/');
     } catch (error) {
-      console.log(error);
+      // TODO: handle different error by statusCode
+      toast({ title: '登入失敗', description: '請確認您的密碼是否正確', variant: 'error' });
     } finally {
       setIsLoading(false);
     }
@@ -46,7 +49,7 @@ export default function Login() {
   return (
     <>
       <div className="flex justify-between">
-      <h2>登入</h2>
+        <h2>登入</h2>
       <div>
         新用戶？
         <Link href="/register" className="text-blue-500 underline">快速註冊</Link>

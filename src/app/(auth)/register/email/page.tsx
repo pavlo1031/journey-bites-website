@@ -11,6 +11,7 @@ import InputField from '@/components/custom/InputField';
 import PasswordInput from '@/components/custom/PasswordInput';
 import { ApiManager } from '@/lib/ApiManager';
 import { PASSWORD_VALIDATION } from '@/constants';
+import { useToast } from '@/components/ui/use-toast';
 
 const formSchema = z.object({
   username: z.string().min(1, '請輸入暱稱'),
@@ -30,6 +31,7 @@ const formSchema = z.object({
 
 export default function EmailRegister() {
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
   const form = useForm<FieldValues>({
     resolver: zodResolver(formSchema),
     mode: 'onBlur',
@@ -48,7 +50,8 @@ export default function EmailRegister() {
     try {
       await ApiManager.register({ email, password }); 
     } catch (error) {
-      console.log(error);
+      // TODO: handle different error by statusCode
+      toast({ title: '註冊失敗', description: '請聯絡客服，或稍後再試', variant: 'error' });
     } finally {
       setIsLoading(false);
     }
