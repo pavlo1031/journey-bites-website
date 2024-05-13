@@ -1,8 +1,21 @@
 {
-  "extends": ["next/core-web-vitals", "eslint:recommended",
-    "plugin:react/recommended", "plugin:react-hooks/recommended", "plugin:react/jsx-runtime"],
+  "extends": [
+    "next/core-web-vitals", 
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:react/jsx-runtime"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "root": true,
   "rules": {
     "quotes": ["warn", "single"],
-    "semi": ["warn", "always"]
+    "semi": ["warn", "always"],
+    "space-before-blocks": ["error", "always"],
+    "object-curly-spacing": ["error", "always"],
+    "comma-spacing": ["warn", { "before": false, "after": true }],
+    "react/prop-types": "off"
   }
 }
