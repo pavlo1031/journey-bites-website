@@ -1,23 +1,23 @@
-import axios from 'axios';
 import jsCookie from 'js-cookie';
+import { Method } from 'axios';
 import { JOURNEY_BITES_COOKIE } from '@/constants';
+import { ApiManager } from './ApiManager';
 
-export abstract class AuthApiManager {
-  static get token(): string | null {
-    return jsCookie.get(JOURNEY_BITES_COOKIE) || null;
-  }
-
-  protected static get apiInstance() {
-    return axios.create({
-      baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+export abstract class AuthApiManager extends ApiManager {
+  static fetchWithToken(method: Method, url: string) {
+    const token = jsCookie.get(JOURNEY_BITES_COOKIE);
+    if (!token) throw new Error('Authentication token not found');
+  
+    return this.apiInstance(url, {
+      method,
       headers: {
-        Authorization: `Bearer ${AuthApiManager.token}`
+        Authorization: `Bearer ${token}`
       }
     });
   }
 
   static async getUser() {
-    const res = await AuthApiManager.apiInstance.get('/user');
+    const res = await this.fetchWithToken('get', '/user');
     return res.data;
   }
 }

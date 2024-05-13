@@ -1,6 +1,6 @@
-import { LoginResponse } from '@/types/apiResponse';
 import axios from 'axios';
 import jsCookie from 'js-cookie';
+import { LoginResponse } from '@/types/apiResponse';
 import { JOURNEY_BITES_COOKIE } from '@/constants';
 
 
