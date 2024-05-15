@@ -29,10 +29,10 @@ export default function PasswordInput({ control, name, label, placeholder, formD
     <InputField
       control={control}
       name={name}
-      label={label || "密碼"}
-      placeholder={placeholder || "請輸入你的密碼"}
+      label={label || '密碼'}
+      placeholder={placeholder || '請輸入你的密碼'}
       inputType={passwordInputType}
-      endIcon={passwordInputType === "password" ? EyeOff : Eye}
+      endIcon={passwordInputType === 'password' ? EyeOff : Eye}
       iconAction={togglePasswordInputType}
       formDescription={formDescription}
     />
