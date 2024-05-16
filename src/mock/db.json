@@ -1,0 +1,81 @@
+{
+  "categories":  {
+    "status": 0,
+    "message": "success",
+    "data": [
+      {
+        "id": 1,
+        "name": "台灣",
+        "path": "/taiwan"
+      },
+      {
+        "id": 2,
+        "name": "日本",
+        "path": "/japan"
+      },
+      {
+        "id": 3,
+        "name": "泰國",
+        "path": "/thailand"
+      }
+    ]
+  },
+  "articles-hot": {
+    "status": 0,
+    "message" : "OK",
+    "meta": {
+      "page": 1,
+      "totalPage": 3,
+      "totalCount": 15,
+      "pageSize": 8
+    },
+    "data": [
+      {
+        "id": 12404202,
+        "creator_id": 8763,
+        "creator": "我是 Likes 3 的文章",
+        "title": "標題3",
+        "abstract": "摘要3",
+        "thumbnailUrl": "https://vocus.cc/article/6218eafefd897800013f48ba",
+        "needsPay": true,
+        "readingTime": 2,
+        "status": {
+          "views": 0,
+          "likes": 3,
+          "subscriptions": 0
+        },
+        "updatedAt": "2024-04-22"
+      },{
+        "id": 12404202,
+        "creator_id": 8764,
+        "creator": "我是 Likes 2 的文章",
+        "title": "標題2",
+        "abstract": "摘要2",
+        "thumbnailUrl": "https://vocus.cc/article/6218eafefd897800013f48ba",
+        "needsPay": true,
+        "readingTime": 3,
+        "status": {
+          "views": 1,
+          "likes": 2,
+          "subscriptions": 3
+        },
+        "updatedAt": "2024-04-23"
+      },{
+        "id": 12404202,
+        "creator_id": 8764,
+        "creator": "我是 Likes 1 的文章",
+        "title": "標題1",
+        "abstract": "摘要1",
+        "thumbnailUrl": "https://vocus.cc/article/6218eafefd897800013f48ba",
+        "needsPay": true,
+        "readingTime": 3,
+        "status": {
+          "views": 1,
+          "likes": 1,
+          "subscriptions": 3
+        },
+        "updatedAt": "2024-04-23"
+      }
+    ]
+  }
+}
