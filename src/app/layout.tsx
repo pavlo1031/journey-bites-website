@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { Toaster } from '@/components/ui/toaster';
 import { Noto_Sans as NotoSans } from 'next/font/google';
+import { Toaster } from '@/components/ui/toaster';
+
 import './globals.css';
 
 const inter = NotoSans({ subsets: ['latin'] });
@@ -17,10 +18,10 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body className={inter.className}>
-        <Toaster /> 
-        <main>{children}</main>
+        <Toaster />
+         {children}
       </body>
     </html>
   );
