@@ -11,3 +11,10 @@ export interface ApiResponse<T> {
 }
 
 export type LoginResponse = ApiResponse<{ token: string }>;
+
+
+export type Category = {
+  id: string;
+  name: string;
+  path: string;
+}
