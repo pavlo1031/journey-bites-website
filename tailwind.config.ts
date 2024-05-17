@@ -29,6 +29,7 @@ const config = {
       9: '36px',
       10: '40px',
       11: '44px',
+      12: '48px',
     },
     extend: {
       colors: {
