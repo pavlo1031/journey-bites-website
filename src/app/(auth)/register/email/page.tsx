@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import InputField from '@/components/custom/InputField';
 import PasswordInput from '@/components/custom/PasswordInput';
-import { ApiManager } from '@/lib/ApiManager';
+import { register } from '@/lib/api';
 import { PASSWORD_VALIDATION } from '@/constants';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -48,7 +48,7 @@ export default function EmailRegister() {
   async function onSubmit({ email, password }: FieldValues) {
     setIsLoading(true);
     try {
-      await ApiManager.register({ email, password }); 
+      await register({ email, password }); 
     } catch (error) {
       // TODO: handle different error by statusCode
       toast({ title: '註冊失敗', description: '請聯絡客服，或稍後再試', variant: 'error' });
