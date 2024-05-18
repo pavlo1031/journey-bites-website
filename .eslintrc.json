@@ -16,6 +16,7 @@
     "space-before-blocks": ["error", "always"],
     "object-curly-spacing": ["error", "always"],
     "comma-spacing": ["warn", { "before": false, "after": true }],
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "jsx-quotes": ["error", "prefer-single"]
   }
 }

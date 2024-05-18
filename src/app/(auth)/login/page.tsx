@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { type FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { useUserStore } from '@/providers/userProvider';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { useToast } from '@/components/ui/use-toast';
@@ -22,6 +23,9 @@ const formSchema = z.object({
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
+   const { login } = useUserStore(
+    (state) => state,
+  );
   const { toast } = useToast();
   const form = useForm<FieldValues>({
     resolver: zodResolver(formSchema),
@@ -38,6 +42,7 @@ export default function Login() {
     setIsLoading(true);
     try {
       await ApiManager.login({ email, password }); 
+      login();
       router.push('/');
     } catch (error) {
       // TODO: handle different error by statusCode
@@ -48,27 +53,27 @@ export default function Login() {
   }
   return (
     <>
-      <div className="flex justify-between">
+      <div className='flex justify-between'>
         <h2>登入</h2>
       <div>
         新用戶？
-        <Link href="/register" className="text-blue-500 underline">快速註冊</Link>
+        <Link href='/register' className='text-blue-500 underline'>快速註冊</Link>
       </div>
       </div>
-      <div className="flex flex-col gap-5 my-5">
+      <div className='flex flex-col gap-5 my-5'>
         <Button variant='outline'>使用 Google 登入</Button>
         <Button variant='outline'>使用 Facebook 登入</Button>
       </div>
       <Form {...form}>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+        <form onSubmit={handleSubmit(onSubmit)} className='space-y-5'>
           <InputField
             control={control}
-            name="email"
-            label="帳號"
-            placeholder="請輸入你的 Email"
+            name='email'
+            label='帳號'
+            placeholder='請輸入你的 Email'
           />
-          <PasswordInput control={control} name="password" formDescription="請輸入 6 到 20 位英文及數字"/>
-          <Button type="submit" className="w-full" disabled={buttonDisabled} isLoading={isLoading}>登入</Button>
+          <PasswordInput control={control} name='password' formDescription='請輸入 6 到 20 位英文及數字'/>
+          <Button type='submit' className='w-full' disabled={buttonDisabled} isLoading={isLoading}>登入</Button>
         </form>
       </Form>
     </>

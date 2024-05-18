@@ -58,30 +58,30 @@ export default function EmailRegister() {
   }
   return (
     <>
-      <div className="flex justify-between mb-3">
+      <div className='flex justify-between mb-3'>
         <h2>以 Email 註冊</h2>
         <div>
           已有帳號？
-          <Link href="/login" className="text-blue-500 underline">登入</Link>
+          <Link href='/login' className='text-blue-500 underline'>登入</Link>
         </div>
       </div>
       <Form {...form}>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+        <form onSubmit={handleSubmit(onSubmit)} className='space-y-5'>
           <InputField
             control={control}
-            name="username"
-            label="暱稱"
-            placeholder="請輸入您的暱稱"
+            name='username'
+            label='暱稱'
+            placeholder='請輸入您的暱稱'
           />
           <InputField
             control={control}
-            name="email"
-            label="帳號"
-            placeholder="請輸入您的 Email"
+            name='email'
+            label='帳號'
+            placeholder='請輸入您的 Email'
           />
-          <PasswordInput control={control} name="password" formDescription="請輸入 6 到 20 位英文及數字"/>
-          <PasswordInput control={control} name="confirmPassword" label="再次輸入密碼"/>
-          <Button type="submit" className="w-full" disabled={buttonDisabled} isLoading={isLoading}>註冊</Button>
+          <PasswordInput control={control} name='password' formDescription='請輸入 6 到 20 位英文及數字'/>
+          <PasswordInput control={control} name='confirmPassword' label='再次輸入密碼'/>
+          <Button type='submit' className='w-full' disabled={buttonDisabled} isLoading={isLoading}>註冊</Button>
         </form>
       </Form>
     </>
