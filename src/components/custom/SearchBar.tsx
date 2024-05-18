@@ -2,7 +2,6 @@
 
 import  { useState } from 'react';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
 import SearchIcon from '../icons/SearchIcon';
 
 export default function SearchBar() {
@@ -16,7 +15,7 @@ export default function SearchBar() {
       <div className='flex items-center'>
       {!isOpen && (
         <button
-          className='pl-3 py-[10px] group'
+          className='pl-3 group'
           onClick={toggleSearchBar}
         >
           <SearchIcon className='group-hover:stroke-primary'/>

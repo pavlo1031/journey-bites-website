@@ -3,7 +3,16 @@ import jsCookie from 'js-cookie';
 import { createStore } from 'zustand/vanilla';
 
 export type UserState = {
-  isLogin: boolean
+  isLogin: boolean | null,
+  id: string,
+  displayName: string,
+  avatarImageUrl: string,
+  bio: string,
+  social: {
+    websiteParams: string,
+    instagram: string,
+    facebook: string
+  }
 }
 
 export type UserActions = {
@@ -14,7 +23,16 @@ export type UserActions = {
 export type UserStore = UserState & UserActions
 
 export const defaultInitState: UserState = {
-  isLogin: false,
+  isLogin: null,
+  id: '',
+  displayName: '',
+  avatarImageUrl: '',
+  bio: '',
+  social: {
+    websiteParams: '',
+    instagram: '',
+    facebook: ''
+  }
 };
 
 export const createUserStore = (
