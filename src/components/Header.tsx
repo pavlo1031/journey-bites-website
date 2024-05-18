@@ -5,6 +5,7 @@ import { Button } from './ui/button';
 import { getCategories } from '@/lib/nextApi';
 
 import Logo from '@/images/logo-md.svg';
+import SearchBar from './custom/SearchBar';
 
 export default async function Header() {
   const categories = await getCategories();
@@ -20,7 +21,10 @@ export default async function Header() {
           <Link href='/'>
             <Image src={Logo} alt='Journey Bites' />  
           </Link>
-          <HeaderNav categories={categories} />
+          <div className='flex gap-8'>
+            <HeaderNav categories={categories} />
+            <SearchBar />
+          </div>
         </div>
         <div className='flex gap-8'>
           <Button asChild variant='outline' size='sm'>

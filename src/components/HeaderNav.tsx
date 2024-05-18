@@ -32,7 +32,7 @@ export default function HeaderNav({ categories }: { categories: Category[] }) {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className='[&>svg]:hidden'>探索</NavigationMenuTrigger>
+          <NavigationMenuTrigger className='[&>svg]:hidden p-0'>探索</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className='shadow-[0px_4px_6px_0px_rgba(0, 0, 0, 0.09)] w-[180px] p-4'>
               {components.map((component) => (

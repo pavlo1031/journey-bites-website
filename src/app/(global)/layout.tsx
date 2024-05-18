@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 
 export default function GlobalLayout ({
@@ -11,7 +10,6 @@ export default function GlobalLayout ({
     <>
       <Header />
       {children} 
-      <Footer />
     </>
   );
 }
