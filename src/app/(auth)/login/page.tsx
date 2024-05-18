@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { type FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { useUserStore } from '@/providers/userProvider';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { useToast } from '@/components/ui/use-toast';
@@ -22,6 +23,9 @@ const formSchema = z.object({
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
+   const { login } = useUserStore(
+    (state) => state,
+  );
   const { toast } = useToast();
   const form = useForm<FieldValues>({
     resolver: zodResolver(formSchema),
@@ -38,6 +42,7 @@ export default function Login() {
     setIsLoading(true);
     try {
       await ApiManager.login({ email, password }); 
+      login();
       router.push('/');
     } catch (error) {
       // TODO: handle different error by statusCode

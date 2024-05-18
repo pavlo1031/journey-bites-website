@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { Noto_Sans as NotoSans } from 'next/font/google';
+import { UserStoreProvider } from '@/providers/userProvider';
 import { Toaster } from '@/components/ui/toaster';
 
 import './globals.css';
@@ -20,8 +21,10 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <Toaster />
-         {children}
+        <UserStoreProvider>
+          <Toaster />
+          {children}
+        </UserStoreProvider>
       </body>
     </html>
   );
