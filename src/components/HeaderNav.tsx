@@ -27,7 +27,8 @@ const components: Category[] = [
   }
 ];
 
-export default function HeaderNav({ categories }: { categories: Category[] }) {
+// TODO: after API is ready, set categories is required
+export default function HeaderNav({ categories }: { categories?: Category[] }) {
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -48,7 +49,7 @@ export default function HeaderNav({ categories }: { categories: Category[] }) {
             <Separator />
             <ul className='shadow-[0px_4px_6px_0px_rgba(0, 0, 0, 0.09)] w-[180px] p-4'>
               <li className='text-sm text-grey-300 py-1 px-2 mb-1'>所有分類</li>
-              {categories.map((category) => (
+              {categories?.map((category) => (
                 <ListItem
                   key={category.id}
                   title={category.name}

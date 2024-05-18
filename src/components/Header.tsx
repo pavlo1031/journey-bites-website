@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import HeaderNav from './HeaderNav';
-import { getCategories } from '@/lib/nextApi';
+// import { getCategories } from '@/lib/nextApi';
 import SearchBar from './custom/SearchBar';
 import HeaderButtons from './HeaderButtons';
 
@@ -9,11 +9,11 @@ import Logo from '@/images/logo-md.svg';
 import LogoSm from '@/images/logo-sm.svg';
 
 export default async function Header() {
-  const categories = await getCategories();
+  // const categories = await getCategories();
 
-  if (!categories?.length) {
-    throw new Error('No categories found');
-  }
+  // if (!categories?.length) {
+  //   throw new Error('No categories found');
+  // }
 
   return (
     <header className='sticky z-40 top-0 bg-white'>
@@ -24,7 +24,7 @@ export default async function Header() {
             <Image className='md:hidden' src={LogoSm} alt='Journey Bites' priority />  
           </Link>
           <div className='md:flex gap-8 hidden'>
-            <HeaderNav categories={categories} />
+            <HeaderNav />
             <SearchBar />
           </div>
         </div>
