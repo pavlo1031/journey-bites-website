@@ -12,7 +12,7 @@ import { Form } from '@/components/ui/form';
 import { useToast } from '@/components/ui/use-toast';
 import InputField from '@/components/custom/InputField';
 import PasswordInput from '@/components/custom/PasswordInput';
-import { ApiManager } from '@/lib/ApiManager';
+import { login as loginApi } from '@/lib/api';
 import { PASSWORD_VALIDATION } from '@/constants';
 
 const formSchema = z.object({
@@ -41,7 +41,7 @@ export default function Login() {
   async function onSubmit({ email, password }: FieldValues) {
     setIsLoading(true);
     try {
-      await ApiManager.login({ email, password }); 
+      await loginApi({ email, password }); 
       login();
       router.push('/');
     } catch (error) {
