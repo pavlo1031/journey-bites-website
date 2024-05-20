@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import Header from '@/components/Header';
 
-export default function GlobalLayout ({
+export default function GlobalLayout({
   children,
 }: Readonly<{
   children: ReactNode;
@@ -9,7 +9,7 @@ export default function GlobalLayout ({
   return (
     <>
       <Header />
-      {children} 
+      {children}
     </>
   );
 }
