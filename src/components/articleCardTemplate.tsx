@@ -53,12 +53,14 @@ export default function ArticleCardTemplate({ title, color }: ArticleCardTitlePr
                   </CardContent>
                 </div>
                 <div className='relative col-span-3 flex justify-self-end w-[100px] h-[100px]'>
-                  <Image src={`https://picsum.photos/id/${index + 10}/100/100`} alt='jorney bites' placeholder='empty' priority={false} fill={true} className='rounded-lg' />
+                  <Image src={`https://picsum.photos/id/${index + 10}/100/100`} alt='jorney bites' sizes='100%' placeholder='empty' priority={false} fill={true} className='rounded-lg' />
                 </div>
               </div>
               <CardFooter className='py-2'>
                 <Avatar>
-                  <AvatarImage src={`https://picsum.photos/id/${index + 20}/100/100`} alt='@shadcn' />
+                  <AvatarImage asChild src={`https://picsum.photos/id/${index + 20}/100/100`}>
+                    <Image src={`https://picsum.photos/id/${index + 20}/100/100`} alt='logo' width={40} height={40} />
+                  </AvatarImage>
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
                 <p className='px-2'>林美慧</p>
