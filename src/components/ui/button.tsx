@@ -18,6 +18,7 @@ const buttonVariants = cva(
         secondary:
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
+        fullLink: 'block text-grey-500 w-full py-4 text-center mb-3 rounded-lg',
         link: 'text-primary underline-offset-4 hover:underline',
         pillPrimary: 'border-2 border-primary rounded-full text-primary font-bold hover:bg-primary-300 hover:border-primary-300 active:bg-primary-400  active:border-primary-400 hover:text-white',
       },
