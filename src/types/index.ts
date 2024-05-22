@@ -8,3 +8,9 @@ export enum InputType {
 export interface BaseLayoutProps {
   children: ReactNode
 }
+
+export type Tab = {
+  value: string;
+  label: string,
+  content: React.ReactNode
+}
