@@ -13,15 +13,6 @@ const config = {
     container: {
       center: true,
       padding: '2rem',
-      screens: {
-        'xs': { 'min': '375px', 'max': '639px' },
-        'sm': { 'min': '640px', 'max': '767px' },
-        'md': { 'min': '768px', 'max': '1023px' },
-        'lg': { 'min': '1024px', 'max': '1279px' },
-        'xl': { 'min': '1280px', 'max': '1535px' },
-        '2xl': { 'min': '1536px' },
-        // '2xl': '1400px',
-      },
     },
     spacing: {
       0: '0px',
@@ -40,7 +31,7 @@ const config = {
     },
     extend: {
       borderWidth: {
-        '16': '16px'
+        '10': '10px'
       },
       colors: {
         border: 'hsl(var(--border))',
@@ -117,10 +108,18 @@ const config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+      screens: {
+        'xs': { 'min': '375px', 'max': '639px' },
+        'sm': { 'min': '640px', 'max': '767px' },
+        'md': { 'min': '768px', 'max': '1023px' },
+        'lg': { 'min': '1024px', 'max': '1279px' },
+        'xl': { 'min': '1280px', 'max': '1535px' },
+        '2xl': { 'min': '1536px' },
+      },
       maxWidth: {
         '1024': '1024px',
-        '1280': '1280px'
-      }
+        '1280': '1280px',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

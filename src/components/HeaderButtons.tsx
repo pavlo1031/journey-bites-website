@@ -11,7 +11,7 @@ export default function HeaderButtons() {
   const { isLogin, logout } = useUserStore((state) => state);
 
   return (
-    <div className='md:flex gap-8 hidden'>
+    <div className='xs:flex sm:flex md:flex lg:flex xl:flex 2xl:flex gap-8 hidden'>
       {typeof isLogin === 'boolean' && (
         !isLogin ? (
           <>
@@ -27,10 +27,10 @@ export default function HeaderButtons() {
             <Button asChild size='sm'>
               <Link href='#'>開始創作</Link>
             </Button>
-            <DropdownMenu 
+            <DropdownMenu
               triggerButton={
                 <button>
-                  <User className='hover:stroke-primary'/>
+                  <User className='hover:stroke-primary' />
                 </button>
               }
             >
@@ -44,7 +44,7 @@ export default function HeaderButtons() {
           </>
         )
       )}
-      
+
     </div>
   );
 }
