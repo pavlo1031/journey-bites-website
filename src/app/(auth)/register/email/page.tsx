@@ -15,7 +15,7 @@ import { PASSWORD_VALIDATION } from '@/constants';
 import { useToast } from '@/components/ui/use-toast';
 
 const formSchema = z.object({
-  displayName: z.string().min(1, '請輸入暱稱'),
+  displayName: z.string().min(1, { message: '暱稱是必填欄位' }).max(50, { message: '暱稱不能超過50個字' }),
   email: z.string().email({ message: '非 Email 格式，請重新輸入' }),
   password: PASSWORD_VALIDATION,
   confirmPassword: PASSWORD_VALIDATION,
