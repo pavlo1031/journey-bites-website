@@ -23,7 +23,7 @@ const formSchema = z.object({
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
-   const { login } = useUserStore(
+  const { login } = useUserStore(
     (state) => state,
   );
   const { toast } = useToast();
@@ -41,7 +41,7 @@ export default function Login() {
   async function onSubmit({ email, password }: FieldValues) {
     setIsLoading(true);
     try {
-      await loginApi({ email, password }); 
+      await loginApi({ email, password });
       login();
       router.push('/');
     } catch (error) {
@@ -55,10 +55,10 @@ export default function Login() {
     <>
       <div className='flex justify-between'>
         <h2>登入</h2>
-      <div>
-        新用戶？
-        <Link href='/register' className='text-blue-500 underline'>快速註冊</Link>
-      </div>
+        <div>
+          新用戶？
+          <Link href='/register' className='text-blue-500 underline'>快速註冊</Link>
+        </div>
       </div>
       <div className='flex flex-col gap-5 my-5'>
         <Button variant='outline'>使用 Google 登入</Button>
@@ -72,7 +72,7 @@ export default function Login() {
             label='帳號'
             placeholder='請輸入你的 Email'
           />
-          <PasswordInput control={control} name='password' formDescription='請輸入 6 到 20 位英文及數字'/>
+          <PasswordInput control={control} name='password' formDescription='請輸入 6 到 20 位英文及數字' />
           <Button type='submit' className='w-full' disabled={buttonDisabled} isLoading={isLoading}>登入</Button>
         </form>
       </Form>

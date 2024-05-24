@@ -20,10 +20,10 @@ export default async function Header() {
       <div className='w-[67.5%] max-w-[1296px] mx-auto py-5 flex items-center justify-between'>
         <div className='flex items-center gap-12'>
           <Link href='/'>
-            <Image className='md:inline-block hidden' src={Logo} alt='Journey Bites' priority />  
-            <Image className='md:hidden' src={LogoSm} alt='Journey Bites' priority />  
+            <Image className='xs:hidden sm:hidden' src={Logo} alt='Journey Bites' priority />
+            <Image className='xs:block sm:block hidden' src={LogoSm} alt='Journey Bites' priority />
           </Link>
-          <div className='md:flex gap-8 hidden'>
+          <div className='md:flex lg:flex xl:flex 2xl:flex gap-8 hidden'>
             <HeaderNav />
             <SearchBar />
           </div>
