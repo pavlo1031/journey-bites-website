@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { type FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -14,7 +15,7 @@ import { PASSWORD_VALIDATION } from '@/constants';
 import { useToast } from '@/components/ui/use-toast';
 
 const formSchema = z.object({
-  username: z.string().min(1, '請輸入暱稱'),
+  displayName: z.string().min(1, { message: '暱稱是必填欄位' }).max(50, { message: '暱稱不能超過50個字' }),
   email: z.string().email({ message: '非 Email 格式，請重新輸入' }),
   password: PASSWORD_VALIDATION,
   confirmPassword: PASSWORD_VALIDATION,
@@ -32,11 +33,13 @@ const formSchema = z.object({
 export default function EmailRegister() {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const router = useRouter();
+
   const form = useForm<FieldValues>({
     resolver: zodResolver(formSchema),
     mode: 'onBlur',
     defaultValues: {
-      username: '',
+      displayName: '',
       email: '',
       password: '',
       confirmPassword: ''
@@ -45,10 +48,11 @@ export default function EmailRegister() {
   const { control, handleSubmit, formState: { isValid } } = form;
   const buttonDisabled = Boolean(isLoading || !isValid);
  
-  async function onSubmit({ email, password }: FieldValues) {
+  async function onSubmit({ email, password, displayName }: FieldValues) {
     setIsLoading(true);
     try {
-      await register({ email, password }); 
+      await register({ email, password, displayName }); 
+      router.replace('/login');
     } catch (error) {
       // TODO: handle different error by statusCode
       toast({ title: '註冊失敗', description: '請聯絡客服，或稍後再試', variant: 'error' });
@@ -69,7 +73,7 @@ export default function EmailRegister() {
         <form onSubmit={handleSubmit(onSubmit)} className='space-y-5'>
           <InputField
             control={control}
-            name='username'
+            name='displayName'
             label='暱稱'
             placeholder='請輸入您的暱稱'
           />
