@@ -1,17 +1,29 @@
-import { JOURNEY_BITES_COOKIE } from '@/constants';
+'use client';
+
+import { useRouter } from 'next/navigation';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { BaseLayoutProps } from '@/types';
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+import { useUserStore } from '@/providers/userProvider';
+import { useEffect } from 'react';
+
+const queryClient = new QueryClient();
 
 export default function DashboardLayout({ children }: BaseLayoutProps) {
-  const cookieObj = cookies();
-  const hasLoginToken = cookieObj.get(JOURNEY_BITES_COOKIE);
+  const { isLogin  } = useUserStore((state) => state);
+  const router = useRouter();
 
-  if (!hasLoginToken) {
-    redirect('/login');
-  }
+  useEffect(() => {
+    // can't use !isLogin, because it's null at first
+    if (isLogin === false) {
+      router.replace('/login');
+    }
+  }, [isLogin, router]);
 
   return (
-    <>{children}</>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      {children}
+    </QueryClientProvider>
   );
 }
