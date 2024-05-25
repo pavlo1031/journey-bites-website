@@ -1,7 +1,8 @@
 import jsCookie from 'js-cookie';
+import type { AxiosRequestConfig, Method } from 'axios';
 import { JOURNEY_BITES_COOKIE } from '@/constants';
 import { ApiService } from './ApiService';
-import type { AxiosRequestConfig, Method } from 'axios';
+import { UserResponse } from '@/types/apiResponse';
 
 const apiService = new ApiService();
 
@@ -15,7 +16,6 @@ async function fetchWithToken<T>(method: Method, url: string, options?: AxiosReq
 }
 
 export async function getUser() {
-  // TODO: define user API response type
-  const res = await fetchWithToken('get', '/user');
-  return res;
+  const res = await fetchWithToken<UserResponse>('get', '/user');
+  return res.data;
 }
