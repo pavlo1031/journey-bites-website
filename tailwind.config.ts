@@ -42,6 +42,7 @@ const config = {
         primary: {
           DEFAULT: 'var(--primary)',
           100: 'var(--primary-foreground)',
+          200: 'var(--primary-200)',
           300: 'var(--primary-300)',
           400: 'var(--primary-400)',
         },
@@ -113,8 +114,8 @@ const config = {
         'sm': { 'min': '640px', 'max': '767px' },
         'md': { 'min': '768px', 'max': '1023px' },
         'lg': { 'min': '1024px', 'max': '1279px' },
-        'xl': { 'min': '1280px', 'max': '1535px' },
-        '2xl': { 'min': '1536px' },
+        'xl': { 'min': '1280px', 'max': '1534px' },
+        '2xl': { 'min': '1535px' },
       },
       maxWidth: {
         '1024': '1024px',

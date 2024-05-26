@@ -15,6 +15,7 @@
 
     --primary: #444FAE;
     --primary-foreground: #EBEFFA;
+    --primary-200: #444FAE;
     --primary-300: #3A428E;
     --primary-400: #2E3572;
 
@@ -88,6 +89,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }

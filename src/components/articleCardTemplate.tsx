@@ -21,13 +21,22 @@ type ArticleCardTitleProps = {
   color: 'primary-100' | 'secondary-100';
 } & ComponentProps<'div'>
 
-export default function ArticleCardTemplate({ title, color }: ArticleCardTitleProps) {
+async function getRecipes() {
+  const resp = await fetch('https://jsonplaceholder.typicode.com/users');
+
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  return resp.json();
+}
+
+export default async function ArticleCardTemplate({ title, color }: ArticleCardTitleProps) {
   const colorVariants: Record<'primary-100' | 'secondary-100', string> = {
     'primary-100': 'bg-primary-100',
     'secondary-100': 'bg-secondary-100',
   };
 
-  const containerClass = `xl:max-w-1024 2xl:max-w-1280 relative rounded-lg ${colorVariants[color]}`;
+  const containerClass = `md:max-w-1024 lg:max-w-1024 xl:max-w-1024 2xl:max-w-1280 relative rounded-lg ${colorVariants[color]}`;
+
+  const datas = await getRecipes();
 
   return (
     <div className={containerClass}>
@@ -47,19 +56,19 @@ export default function ArticleCardTemplate({ title, color }: ArticleCardTitlePr
           {title}
         </h1>
       )}
-      <div className='grid p-9 xl:grid-cols-2 gap-x-4 gap-y-9'>
+      <div className='grid p-9 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 gap-x-4 gap-y-9'>
         {'1234567890'.split('').map((item, index) => (
           <Card key={item} >
             <div className='grid grid-cols-12'>
-              <div className='xs:col-span-7 sm:col-span-10 md:col-span-10 lg:col-span-9 xl:col-span-9 2xl:col-span-9'>
-                <CardHeader className='col-span-10'>
+              <div className='xs:col-span-7 sm:col-span-10 md:col-span-10 lg:col-span-9 xl:col-span-7 2xl:col-span-8'>
+                <CardHeader>
                   <CardTitle className='text-xl font-bold truncate'>探索京都的古老魅力：千年古都的神秘之旅探索京都的古老魅力：千年古都的神秘之旅</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className='line-clamp-2'>京都是一個充滿歷史與文化的城市，擁有眾多古老的寺廟和神社。在這裡，您可以體驗到日本傳統的茶道、花道等文化活動。</p>
                 </CardContent>
               </div>
-              <div className='relative xs:col-span-5 sm:col-span-2 md:col-span-2 lg:col-span-3 xl:col-span-3 2xl:col-span-3 flex justify-self-end w-[100px] h-[100px]'>
+              <div className='relative xs:col-span-5 sm:col-span-2 md:col-span-2 lg:col-span-3 xl:col-span-5 2xl:col-span-4 flex justify-self-end w-[100px] h-[100px]'>
                 <Image src={`https://picsum.photos/id/${index + 10}/100/100`} alt='jorney bites' sizes='100%' placeholder='empty' priority={false} fill={true} className='rounded-lg' />
               </div>
             </div>
@@ -70,7 +79,7 @@ export default function ArticleCardTemplate({ title, color }: ArticleCardTitlePr
                 </AvatarImage>
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
-              <p className='px-2'>林美慧</p>
+              <p className='px-2'>{datas[item].name}</p>
             </CardFooter>
             <div className='flex align-center justify-between'>
               <CardDescription>2024/3/23</CardDescription>
