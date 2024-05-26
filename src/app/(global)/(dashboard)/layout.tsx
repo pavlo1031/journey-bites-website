@@ -7,6 +7,7 @@ import { BaseLayoutProps } from '@/types';
 import { useUserStore } from '@/providers/userProvider';
 import { useEffect } from 'react';
 
+// TODO: handle different error by statusCode globally, ex: show toast
 const queryClient = new QueryClient();
 
 export default function DashboardLayout({ children }: BaseLayoutProps) {

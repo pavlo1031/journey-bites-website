@@ -43,7 +43,8 @@ export default function Login() {
     try {
       await loginApi({ email, password });
       login();
-      router.push('/');
+      // Replace to /manage/user temporarily, will be changed to ?return_url from query string
+      router.replace('/manage/user');
     } catch (error) {
       // TODO: handle different error by statusCode
       toast({ title: '登入失敗', description: '請確認您的密碼是否正確', variant: 'error' });

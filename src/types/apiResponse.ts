@@ -24,9 +24,9 @@ export type Category = {
 export type Profile = {
   id: string;
   displayName: string;
-  avatarImageUrl: string;
-  bio: string;
-  socialLinksId: string;
+  avatarImageUrl: string | null;
+  bio: string | null;
+  socialLinksId: string | null;
 }
 
 export type UserResponse = ApiSuccessResponse<{
