@@ -10,7 +10,7 @@ export async function login({ email, password }: { email: string; password: stri
   const res = await apiService.fetchData<LoginResponse>('post', '/auth/login', { data });
 
   if(res.data) {
-    jsCookie.set(JOURNEY_BITES_COOKIE, res.data.token);
+    jsCookie.set(JOURNEY_BITES_COOKIE, res.data.token, { expires: 3 });
   }
   return res.data;
 }

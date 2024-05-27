@@ -120,6 +120,9 @@ const config = {
         '1024': '1024px',
         '1280': '1280px',
       },
+      boxShadow: {
+        tabs: '0px 2px 8px 0px rgba(39, 41, 55, 0.08)'
+      }
     },
   },
   plugins: [require('tailwindcss-animate')],

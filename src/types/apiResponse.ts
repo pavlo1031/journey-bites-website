@@ -1,6 +1,9 @@
-export interface ApiResponse<T> {
+export interface ApiResponse {
   statusCode: number,
-  message: string,
+  message: string
+}
+
+export interface ApiSuccessResponse<T> extends ApiResponse {
   data?: T,
   meta?: {
     page: number,
@@ -10,11 +13,25 @@ export interface ApiResponse<T> {
   }
 }
 
-export type LoginResponse = ApiResponse<{ token: string }>;
-
+export type LoginResponse = ApiSuccessResponse<{ token: string }>;
 
 export type Category = {
   id: string;
   name: string;
   path: string;
 }
+
+export type Profile = {
+  id: string;
+  displayName: string;
+  avatarImageUrl: string | null;
+  bio: string | null;
+  socialLinksId: string | null;
+}
+
+export type UserResponse = ApiSuccessResponse<{
+  email: string,
+  emailVerified: boolean,
+  profile: Profile,
+  // oAuthProvider: null,
+}>

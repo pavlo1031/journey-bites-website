@@ -12,7 +12,7 @@ import { Form } from '@/components/ui/form';
 import { useToast } from '@/components/ui/use-toast';
 import InputField from '@/components/custom/InputField';
 import PasswordInput from '@/components/custom/PasswordInput';
-import { login as loginApi } from '@/lib/api';
+import { login } from '@/lib/api';
 import { PASSWORD_VALIDATION } from '@/constants';
 
 const formSchema = z.object({
@@ -23,7 +23,7 @@ const formSchema = z.object({
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
-  const { login } = useUserStore(
+  const { setToken } = useUserStore(
     (state) => state,
   );
   const { toast } = useToast();
@@ -41,9 +41,10 @@ export default function Login() {
   async function onSubmit({ email, password }: FieldValues) {
     setIsLoading(true);
     try {
-      await loginApi({ email, password });
-      login();
-      router.push('/');
+      await login({ email, password });
+      setToken();
+      // Replace to /manage/user temporarily, will be changed to ?return_url from query string
+      router.replace('/manage/user');
     } catch (error) {
       // TODO: handle different error by statusCode
       toast({ title: '登入失敗', description: '請確認您的密碼是否正確', variant: 'error' });

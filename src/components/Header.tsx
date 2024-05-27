@@ -8,7 +8,7 @@ import HeaderButtons from './HeaderButtons';
 import Logo from '@/images/logo-md.svg';
 import LogoSm from '@/images/logo-sm.svg';
 
-export default async function Header() {
+export default function Header() {
   // const categories = await getCategories();
 
   // if (!categories?.length) {
@@ -16,7 +16,7 @@ export default async function Header() {
   // }
 
   return (
-    <header className='sticky z-40 top-0 bg-white'>
+    <header className='sticky z-40 top-0 bg-white border border-b-gray-200'>
       <div className='w-[67.5%] max-w-[1296px] mx-auto py-5 flex items-center justify-between'>
         <div className='flex items-center gap-12'>
           <Link href='/'>
