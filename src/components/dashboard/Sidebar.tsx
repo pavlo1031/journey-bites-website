@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Camera } from 'lucide-react';
+import { CameraIcon } from 'lucide-react';
 import { Button } from '../ui/button'; 
 import { cn } from '@/lib/utils';
 
@@ -40,7 +40,7 @@ export default function Sidebar() {
       <div className='relative rounded-full w-[120px] h-[120px] mx-auto mb-9'>
         <Image src={DefaultUserImg} width={120} height={120} alt='Journey Bites' className='rounded-full'/>
         <Button variant='icon' className='group absolute -right-3 bottom-1'>
-          <Camera size ={20} className='group-hover:stroke-primary-100 stroke-primary'/>
+          <CameraIcon size ={20} className='group-hover:stroke-primary-100 stroke-primary'/>
         </Button>
       </div>
       {

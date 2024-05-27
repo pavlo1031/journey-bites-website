@@ -8,7 +8,7 @@ import HeaderButtons from './HeaderButtons';
 import Logo from '@/images/logo-md.svg';
 import LogoSm from '@/images/logo-sm.svg';
 
-export default async function Header() {
+export default function Header() {
   // const categories = await getCategories();
 
   // if (!categories?.length) {

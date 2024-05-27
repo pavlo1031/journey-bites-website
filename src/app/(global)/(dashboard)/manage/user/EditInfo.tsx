@@ -16,8 +16,6 @@ export default function EditInfo() {
     return <div>找不到您的資料，請聯繫客服</div>;
   }
 
-
-
   return (
     <>
       <TitleWIthIcon title='個人資料管理' icon={User2Icon} />
