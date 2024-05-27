@@ -1,30 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import jsCookie from 'js-cookie';
 import { LogOut, User } from 'lucide-react';
 import { Button } from './ui/button';
 import { useUserStore } from '@/providers/userProvider';
 import { DropdownMenuComponent as DropdownMenu } from './custom/DropdownMenu';
 import { DropdownMenuItem } from './ui/dropdown-menu';
-import { useEffect, useRef } from 'react';
-import { JOURNEY_BITES_COOKIE } from '@/constants';
 
 export default function HeaderButtons() {
-  const { isLogin, login, logout } = useUserStore((state) => state);
-  const isCheckLogin = useRef(false);
-
-  useEffect(() => {
-    if (!isCheckLogin.current) { 
-      const userCookie = jsCookie.get(JOURNEY_BITES_COOKIE);
-      if (userCookie) {
-        login();
-      } else {
-        logout();
-      }
-      isCheckLogin.current = true;
-    }
-  }, [login, logout]);
+  const { isLogin, logout } = useUserStore((state) => state);
 
   return (
     <div className='xs:flex sm:flex md:flex lg:flex xl:flex 2xl:flex gap-8 hidden'>

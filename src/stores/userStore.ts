@@ -17,7 +17,7 @@ export type UserState = {
 
 export type UserActions = {
   logout: () => void,
-  login: () => void
+  setToken: () => void
 }
 
 export type UserStore = UserState & UserActions
@@ -40,7 +40,7 @@ export const createUserStore = (
 ) => {
   return createStore<UserStore>()((set) => ({
     ...initState,
-    login: () => {
+    setToken: () => {
       const userCookie = jsCookie.get(JOURNEY_BITES_COOKIE);
       if (userCookie) {
         set({ isLogin: true });

@@ -21,12 +21,12 @@ const buttonVariants = cva(
         fullLink: 'block text-grey-500 w-full py-4 text-center mb-3 rounded-lg',
         link: 'text-primary underline-offset-4 hover:underline',
         pillPrimary: 'border-2 border-primary rounded-full text-primary font-bold hover:bg-primary-300 hover:border-primary-300 active:bg-primary-400  active:border-primary-400 hover:text-white',
+        icon: 'flex w-11 h-11 bg-primary-100 color-primary border-none rounded-full hover:bg-primary-300 active:bg-primary-400',
       },
       size: {
         default: 'px-5 py-3',
         sm: 'rounded-md px-4 py-2',
         lg: 'rounded-md px-8',
-        icon: 'flex w-11 h-11 bg-primary-100 color-primary border-none rounded-full hover:bg-primary-300 active:bg-primary-400',
       },
     },
     defaultVariants: {

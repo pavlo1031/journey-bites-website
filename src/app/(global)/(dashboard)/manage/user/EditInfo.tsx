@@ -1,7 +1,7 @@
 'use client';
  
 import { useQuery } from '@tanstack/react-query';
-import { User2 as UserIcon, Loader2 } from 'lucide-react';
+import { User2Icon, Loader2Icon } from 'lucide-react';
 import TitleWIthIcon from '@/components/dashboard/TitleWIthIcon';
 import TabsWithContent from '@/components/dashboard/TabsWithContent';
 import ProfileForm from './ProfileForm';
@@ -10,9 +10,9 @@ import { getUser } from '@/lib/authApi';
 
 
 export default function EditInfo() {
-  const { data, isLoading } = useQuery({ queryKey: ['userInfo'], queryFn: getUser });
+  const { data, isLoading, isFetched } = useQuery({ queryKey: ['userInfo'], queryFn: getUser });
 
-  if (!data && !isLoading) {
+  if (!data && isFetched) {
     return <div>找不到您的資料，請聯繫客服</div>;
   }
 
@@ -20,8 +20,8 @@ export default function EditInfo() {
 
   return (
     <>
-      <TitleWIthIcon title='個人資料管理' icon={UserIcon} />
-      {isLoading && <Loader2 className='h-6 w-6 animate-spin text-primary mx-auto' />}
+      <TitleWIthIcon title='個人資料管理' icon={User2Icon} />
+      {isLoading && <Loader2Icon className='h-6 w-6 animate-spin text-primary mx-auto' />}
       {data &&
         (
           <TabsWithContent

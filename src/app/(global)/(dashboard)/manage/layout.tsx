@@ -1,7 +1,7 @@
+import type { PropsWithChildren } from 'react';
 import Sidebar from '@/components/dashboard/Sidebar';
-import { BaseLayoutProps } from '@/types';
 
-export default function ManageLayout({ children }: BaseLayoutProps) {
+export default function ManageLayout({ children }: PropsWithChildren) {
   return (
     <div className='grid grid-cols-12 gap-6 max-w-[1296px] mx-auto mt-[60px]'>
       <Sidebar />

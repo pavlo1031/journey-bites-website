@@ -1,16 +1,16 @@
 'use client';
 
+import type { PropsWithChildren } from 'react';
 import { useRouter } from 'next/navigation';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { BaseLayoutProps } from '@/types';
 import { useUserStore } from '@/providers/userProvider';
 import { useEffect } from 'react';
 
 // TODO: handle different error by statusCode globally, ex: show toast
 const queryClient = new QueryClient();
 
-export default function DashboardLayout({ children }: BaseLayoutProps) {
+export default function DashboardLayout({ children }: PropsWithChildren) {
   const { isLogin  } = useUserStore((state) => state);
   const router = useRouter();
 
