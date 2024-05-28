@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useRef, type ReactNode } from 'react';
-import Header from '@/components/Header';
 import { JOURNEY_BITES_COOKIE } from '@/constants';
 import { useUserStore } from '@/providers/userProvider';
 import jsCookie from 'js-cookie';
+import Header from '@/components/Header';
 
 export default function GlobalLayout({
   children,
