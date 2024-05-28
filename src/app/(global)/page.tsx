@@ -3,9 +3,9 @@
 import Image from 'next/image';
 
 import BannerImg from '@/images/banner.webp';
-import CreatorList from '@/components/CreatorList';
-import PopularAttractions from '@/components/PopularAttractions';
-import ArticleCardTemplate from '@/components/ArticleCardTemplate';
+import CreatorList from '@/components/CreatorListComponent';
+import PopularArea from '@/components/PopularArea';
+import ArticleCard from '@/components/ArticleCard';
 import { Suspense } from 'react';
 import Loading from '@/components/loading';
 
@@ -18,15 +18,15 @@ export default function Home() {
           <div className='grid grid-cols-12'>
             <div className='xs:col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-8 xl:col-span-8 2xl:col-span-8 xs:px-3 sm:px-3 md:px-3'>
               <Suspense fallback={<Loading />}>
-                <ArticleCardTemplate title='熱門文章' color='secondary-100' />
+                <ArticleCard title='熱門文章' color='secondary-100' />
               </Suspense>
               <Suspense fallback={<Loading />}>
-                <ArticleCardTemplate title='推薦文章' color='primary-100' />
+                <ArticleCard title='推薦文章' color='primary-100' />
               </Suspense>
             </div>
             <div className='xs:col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 xl:col-span-4 2xl:col-span-4 xs:px-3 sm:px-3 md:px-3 md:ml-6 lg:ml-6 xl:ml-6 2xl:ml-6'>
               <CreatorList />
-              <PopularAttractions />
+              <PopularArea />
             </div>
           </div>
         </div>
