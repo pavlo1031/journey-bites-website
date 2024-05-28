@@ -3,7 +3,7 @@
 import Image from 'next/image';
 
 import BannerImg from '@/images/banner.webp';
-import CreatorList from '@/components/CreatorListComponent';
+import CreatorList from '@/components/CreatorList';
 import PopularArea from '@/components/PopularArea';
 import ArticleCard from '@/components/ArticleCard';
 import { Suspense } from 'react';
