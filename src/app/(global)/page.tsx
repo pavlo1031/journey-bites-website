@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import BannerImg from '@/images/banner.webp';
 import CreatorList from '@/components/CreatorList';
-import PopularArea from '@/components/PopularArea';
+import PopularAreas from '@/components/PopularAreas';
 import ArticleCard from '@/components/ArticleCard';
 import { Suspense } from 'react';
 import Loading from '@/components/loading';
@@ -26,7 +26,7 @@ export default function Home() {
             </div>
             <div className='xs:col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 xl:col-span-4 2xl:col-span-4 xs:px-3 sm:px-3 md:px-3 md:ml-6 lg:ml-6 xl:ml-6 2xl:ml-6'>
               <CreatorList />
-              <PopularArea />
+              <PopularAreas />
             </div>
           </div>
         </div>
