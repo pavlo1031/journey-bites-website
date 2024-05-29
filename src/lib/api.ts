@@ -1,5 +1,5 @@
 import jsCookie from 'js-cookie';
-import { LoginResponse } from '@/types/apiResponse';
+import { ApiResponse, LoginResponse } from '@/types/apiResponse';
 import { JOURNEY_BITES_COOKIE } from '@/constants';
 import { ApiService } from './ApiService';
 
@@ -18,5 +18,9 @@ export async function login({ email, password }: { email: string; password: stri
 export async function register({ email, password, displayName }: { email: string; password: string, displayName: string }) { 
   const data = { email, password, displayName };
   const res = await apiService.fetchData('post', '/auth/register', { data });
+
+export async function verifyEmail(email: string) {
+  const data = { email };
+  const res = await apiService.fetchData<ApiResponse>('post', '/auth/verify-email', { data });
   return res;
 }
