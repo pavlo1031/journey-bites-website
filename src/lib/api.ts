@@ -17,7 +17,9 @@ export async function login({ email, password }: { email: string; password: stri
 
 export async function register({ email, password, displayName }: { email: string; password: string, displayName: string }) { 
   const data = { email, password, displayName };
-  const res = await apiService.fetchData('post', '/auth/register', { data });
+  const res = await apiService.fetchData<ApiResponse>('post', '/auth/register', { data });
+  return res;
+}
 
 export async function verifyEmail(email: string) {
   const data = { email };
