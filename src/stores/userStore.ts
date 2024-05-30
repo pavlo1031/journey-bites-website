@@ -16,7 +16,7 @@ export type UserState = {
 }
 
 export type UserActions = {
-  logout: () => void,
+  removeToken: () => void,
   setToken: () => void
 }
 
@@ -46,7 +46,7 @@ export const createUserStore = (
         set({ isLogin: true });
       }
     },
-    logout: () => {
+    removeToken: () => {
       set({ isLogin: false });
       jsCookie.remove(JOURNEY_BITES_COOKIE);
     }
