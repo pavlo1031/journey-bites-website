@@ -4,7 +4,8 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:react/jsx-runtime"
+    "plugin:react/jsx-runtime",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
@@ -16,6 +17,9 @@
     "object-curly-spacing": ["error", "always"],
     "comma-spacing": ["warn", { "before": false, "after": true }],
     "react/prop-types": "off",
-    "jsx-quotes": ["error", "prefer-single"]
+    "jsx-quotes": ["error", "prefer-single"],
+    "no-trailing-spaces": ["error", { "skipBlankLines": false, "ignoreComments": false }],
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
+    "no-multi-spaces": ["error"]
   }
 }

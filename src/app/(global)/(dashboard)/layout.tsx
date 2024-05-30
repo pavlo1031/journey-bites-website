@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 const queryClient = new QueryClient();
 
 export default function DashboardLayout({ children }: PropsWithChildren) {
-  const { isLogin  } = useUserStore((state) => state);
+  const { isLogin } = useUserStore((state) => state);
   const router = useRouter();
 
   useEffect(() => {
