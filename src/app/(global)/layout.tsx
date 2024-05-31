@@ -16,7 +16,7 @@ export default function GlobalLayout({
   const isCheckLogin = useRef(false);
 
   useEffect(() => {
-    if (!isCheckLogin.current) { 
+    if (!isCheckLogin.current) {
       const userCookie = jsCookie.get(JOURNEY_BITES_COOKIE);
       if (userCookie) {
         setToken();
