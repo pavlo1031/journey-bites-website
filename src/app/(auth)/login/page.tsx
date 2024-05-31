@@ -20,7 +20,6 @@ const formSchema = z.object({
   password: PASSWORD_VALIDATION,
 });
 
-
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const { setToken } = useUserStore(

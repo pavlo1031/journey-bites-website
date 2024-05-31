@@ -1,5 +1,5 @@
 'use client';
- 
+
 import { useQuery } from '@tanstack/react-query';
 import { User2Icon, Loader2Icon } from 'lucide-react';
 import TitleWIthIcon from '@/components/dashboard/TitleWIthIcon';
@@ -7,7 +7,6 @@ import TabsWithContent from '@/components/dashboard/TabsWithContent';
 import ProfileForm from './ProfileForm';
 import LinksForm from './LinksForm';
 import { getUser } from '@/lib/authApi';
-
 
 export default function EditInfo() {
   const { data, isLoading, isFetched } = useQuery({ queryKey: ['userInfo'], queryFn: getUser });

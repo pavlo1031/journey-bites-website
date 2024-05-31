@@ -8,7 +8,6 @@ export default function ManageLayout({ children }: PropsWithChildren) {
       <div className='col-span-9 px-10'>
         {children}
       </div>
-    </div>  
+    </div>
   );
 }
- 
