@@ -10,7 +10,7 @@ async function nextFetch<T>(url: string, option?: RequestInit): Promise<T> {
   if (!res.ok) {
     throw new HttpException({ httpCode: res.status, statusCode: data.statusCode, message: data.message, data: data.data });
   }
-  
+
   return data.data as T;
 }
 

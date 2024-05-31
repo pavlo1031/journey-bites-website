@@ -5,7 +5,7 @@ import { ApiService } from './ApiService';
 
 const apiService = new ApiService();
 
-export async function login({ email, password }: { email: string; password: string }) { 
+export async function login({ email, password }: { email: string; password: string }) {
   const data = { email, password };
   const res = await apiService.fetchData<LoginResponse>('post', '/auth/login', { data });
 
@@ -15,7 +15,7 @@ export async function login({ email, password }: { email: string; password: stri
   return res.data;
 }
 
-export async function register({ email, password, displayName }: { email: string; password: string, displayName: string }) { 
+export async function register({ email, password, displayName }: { email: string; password: string, displayName: string }) {
   const data = { email, password, displayName };
   const res = await apiService.fetchData<ApiResponse>('post', '/auth/register', { data });
   return res;

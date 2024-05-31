@@ -32,7 +32,6 @@ const formSchema = z.object({
   }
 );
 
-
 export default function EmailRegister() {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
@@ -50,11 +49,11 @@ export default function EmailRegister() {
   });
   const { control, handleSubmit, formState: { isValid, errors } } = form;
   const buttonDisabled = Boolean(isLoading || !isValid) || Object.keys(errors).length > 0;
- 
+
   async function onSubmit({ email, password, displayName }: FieldValues) {
     setIsLoading(true);
     try {
-      await register({ email, password, displayName }); 
+      await register({ email, password, displayName });
       router.replace('/login');
     } catch (error) {
       if (!isAxiosError(error)) return;
@@ -78,7 +77,7 @@ export default function EmailRegister() {
     } catch (error) {
       if (!isAxiosError(error)) return;
       if(error.response?.data.statusCode === StatusCode.USER_ALREADY_EXISTS) {
-        form.setError('email', { message: '此帳號已被註冊，請直接登入' });   
+        form.setError('email', { message: '此帳號已被註冊，請直接登入' });
       }
     }
   }
