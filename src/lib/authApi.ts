@@ -25,3 +25,7 @@ export async function resetPassword(password: string) {
   const res = await fetchWithToken<ApiResponse>('patch', '/auth/reset-password', { data });
   return res;
 }
+
+export async function logout() {
+  return fetchWithToken<ApiResponse>('post', '/auth/logout');
+}

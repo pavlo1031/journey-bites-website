@@ -12,7 +12,7 @@ export default function GlobalLayout({
   children: ReactNode;
 }>) {
 
-  const { setToken, logout } = useUserStore((state) => state);
+  const { setToken, removeToken } = useUserStore((state) => state);
   const isCheckLogin = useRef(false);
 
   useEffect(() => {
@@ -21,11 +21,11 @@ export default function GlobalLayout({
       if (userCookie) {
         setToken();
       } else {
-        logout();
+        removeToken();
       }
       isCheckLogin.current = true;
     }
-  }, [setToken, logout]);
+  }, [setToken, removeToken]);
 
   return (
     <>

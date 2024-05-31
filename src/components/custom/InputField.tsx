@@ -14,9 +14,10 @@ type InputFieldProps = {
   startIcon?: LucideIcon;
   endIcon?: LucideIcon;
   iconAction?: () => void;
+  onBlur?: () => void;
 }
 
-export default function InputField ({ control, name, label, inputType, placeholder, formDescription, startIcon, endIcon, iconAction }: InputFieldProps) {
+export default function InputField ({ control, name, label, inputType, placeholder, formDescription, startIcon, endIcon, iconAction, onBlur }: InputFieldProps) {
   return (
     <FormField
       control={control}
@@ -32,6 +33,12 @@ export default function InputField ({ control, name, label, inputType, placehold
               endIcon={endIcon}
               iconAction={iconAction}
               {...field}
+              onBlur={() => {
+                if (onBlur) {
+                  onBlur();
+                }
+                field.onBlur();
+              }}
             />
           </FormControl>
           {formDescription && <FormDescription>{formDescription}</FormDescription>}

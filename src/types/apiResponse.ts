@@ -1,5 +1,7 @@
+import StatusCode from './StatusCode';
+
 export interface ApiResponse {
-  statusCode: number,
+  statusCode: StatusCode,
   message: string
 }
 
