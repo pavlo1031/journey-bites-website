@@ -12,54 +12,62 @@ import DefaultUserImg from '@/images/default-user.webp';
 const menuLinks: { title: string; href: string }[] = [
   {
     title: '個人資料管理',
-    href: '/manage/user'
+    href: '/manage/user',
   },
   {
     title: '內容作品管理',
-    href: '/manage/content'
+    href: '/manage/content',
   },
   {
     title: '我的追蹤與收藏',
-    href: '/manage/follow'
+    href: '/manage/follow',
   },
   {
     title: '訂單記錄',
-    href: '/manage/orders'
+    href: '/manage/orders',
   },
   {
     title: '我的收入',
-    href: '/manage/income'
-  }
+    href: '/manage/income',
+  },
 ];
 
 export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <div className='col-span-3 border border-gray-200 rounded-md shadow-[0px_2px_8px_ 0px_rgba(39, 41, 55, 0.08)] p-6 pt-9 min-h-[733px]'>
-      <div className='relative rounded-full w-[120px] h-[120px] mx-auto mb-9'>
-        <Image src={DefaultUserImg} width={120} height={120} alt='Journey Bites' className='rounded-full'/>
-        <Button variant='icon' className='group absolute -right-3 bottom-1'>
-          <CameraIcon size ={20} className='group-hover:stroke-primary-100 stroke-primary'/>
+    <div className='col-span-3 min-h-[733px] rounded-md border border-gray-200 p-6 pt-9 shadow-[0_2px_8px_0_rgba(39,41,55,0.08)]'>
+      <div className='relative mx-auto mb-9 size-[120px] rounded-full'>
+        <Image
+          src={DefaultUserImg}
+          width={120}
+          height={120}
+          alt='Journey Bites'
+          className='rounded-full'
+        />
+        <Button
+          variant='icon'
+          className='group absolute -right-3 bottom-1'
+        >
+          <CameraIcon
+            size={20}
+            className='stroke-primary group-hover:stroke-primary-100'
+          />
         </Button>
       </div>
-      {
-        menuLinks.map((link) => (
-          <Button
-            key={link.href}
-            asChild
-            variant='fullLink'
-            className={
-              cn({
-                'bg-primary-100': link.href === pathname,
-                'hover:text-primary': link.href !== pathname
-              })
-            }
-          >
-            <Link href={link.href}>{link.title}</Link>
-          </Button>
-        ))
-      }
+      {menuLinks.map((link) => (
+        <Button
+          key={link.href}
+          asChild
+          variant='fullLink'
+          className={cn({
+            'bg-primary-100': link.href === pathname,
+            'hover:text-primary': link.href !== pathname,
+          })}
+        >
+          <Link href={link.href}>{link.title}</Link>
+        </Button>
+      ))}
     </div>
   );
 }

@@ -12,13 +12,13 @@ export default function SearchBar() {
   };
 
   return (
-      <div className='flex items-center'>
+    <div className='flex items-center'>
       {!isOpen && (
         <button
-          className='pl-3 group'
+          className='group pl-3'
           onClick={toggleSearchBar}
         >
-          <SearchIcon className='group-hover:stroke-primary'/>
+          <SearchIcon className='group-hover:stroke-primary' />
         </button>
       )}
       <div
@@ -26,12 +26,15 @@ export default function SearchBar() {
       >
         {isOpen && (
           <>
-            <button className='absolute inset-y-0 left-0 flex items-center pl-3 z-10' onClick={toggleSearchBar}>
+            <button
+              className='absolute inset-y-0 left-0 z-10 flex items-center pl-3'
+              onClick={toggleSearchBar}
+            >
               <SearchIcon className='*:stroke-primary' />
             </button>
             <Input
               type='text'
-              className='pl-10 rounded-md py-2 pr-4 border-gray-200 placeholder-gray-300 focus:outline-none'
+              className='rounded-md border-gray-200 py-2 pl-10 pr-4 placeholder:text-gray-300 focus:outline-none'
               placeholder='Search'
             />
           </>

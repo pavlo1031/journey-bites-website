@@ -28,6 +28,10 @@ const config = {
       10: '40px',
       11: '44px',
       12: '48px',
+      14: '56px',
+      20: '80px',
+      24: '96px',
+      40: '160px',
     },
     extend: {
       borderWidth: {
@@ -123,6 +127,7 @@ const config = {
       },
       boxShadow: {
         tabs: '0px 2px 8px 0px rgba(39, 41, 55, 0.08)',
+        base: '0 4px 6px 0px rgba(0, 0, 0, 0.09)',
       },
     },
   },

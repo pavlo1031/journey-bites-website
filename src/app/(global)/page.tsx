@@ -12,19 +12,28 @@ import Loading from '@/components/loading';
 export default function Home() {
   return (
     <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <Image src={BannerImg} alt='journey bites' />
-      <div className='md:max-w-1024 lg:max-w-1024 xl:max-w-1024 2xl:max-w-1280 mx-auto'>
+      <Image
+        src={BannerImg}
+        alt='journey bites'
+      />
+      <div className='mx-auto md:max-w-1024 lg:max-w-1024 xl:max-w-1024 2xl:max-w-1280'>
         <div className='grid'>
           <div className='grid grid-cols-12'>
-            <div className='xs:col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-8 xl:col-span-8 2xl:col-span-8 xs:px-3 sm:px-3 md:px-3'>
+            <div className='sm:col-span-12 sm:px-3 md:col-span-12 md:px-3 lg:col-span-8 xl:col-span-8 2xl:col-span-8 xs:col-span-12 xs:px-3'>
               <Suspense fallback={<Loading />}>
-                <ArticleCard title='熱門文章' color='secondary-100' />
+                <ArticleCard
+                  title='熱門文章'
+                  color='secondary-100'
+                />
               </Suspense>
               <Suspense fallback={<Loading />}>
-                <ArticleCard title='推薦文章' color='primary-100' />
+                <ArticleCard
+                  title='推薦文章'
+                  color='primary-100'
+                />
               </Suspense>
             </div>
-            <div className='xs:col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 xl:col-span-4 2xl:col-span-4 xs:px-3 sm:px-3 md:px-3 md:ml-6 lg:ml-6 xl:ml-6 2xl:ml-6'>
+            <div className='sm:col-span-12 sm:px-3 md:col-span-12 md:ml-6 md:px-3 lg:col-span-4 lg:ml-6 xl:col-span-4 xl:ml-6 2xl:col-span-4 2xl:ml-6 xs:col-span-12 xs:px-3'>
               <CreatorList />
               <PopularAreas />
             </div>

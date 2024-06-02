@@ -84,7 +84,7 @@ export default function EmailRegister() {
 
   return (
     <>
-      <div className='flex justify-between mb-3'>
+      <div className='mb-3 flex justify-between'>
         <h2>以 Email 註冊</h2>
         <div>
           已有帳號？

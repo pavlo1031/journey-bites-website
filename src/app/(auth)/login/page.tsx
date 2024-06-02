@@ -60,7 +60,7 @@ export default function Login() {
           <Link href='/register' className='text-blue-500 underline'>快速註冊</Link>
         </div>
       </div>
-      <div className='flex flex-col gap-5 my-5'>
+      <div className='my-5 flex flex-col gap-5'>
         <Button variant='outline'>使用 Google 登入</Button>
         <Button variant='outline'>使用 Facebook 登入</Button>
       </div>
