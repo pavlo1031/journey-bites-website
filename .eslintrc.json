@@ -1,12 +1,18 @@
 {
   "extends": [
-    "next/core-web-vitals", 
+    "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:react/jsx-runtime",
+    "plugin:tailwindcss/recommended",
     "prettier"
   ],
+  "settings": {
+    "tailwindcss": {
+      "config": "tailwind.config.ts"
+    }
+  },
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "root": true,
@@ -20,6 +26,9 @@
     "jsx-quotes": ["error", "prefer-single"],
     "no-trailing-spaces": ["error", { "skipBlankLines": false, "ignoreComments": false }],
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
-    "no-multi-spaces": ["error"]
+    "no-multi-spaces": ["error"],
+    "tailwindcss/classnames-order": "error",
+    "tailwindcss/no-contradicting-classname": "error",
+    "tailwindcss/no-custom-classname": "warn"
   }
 }
