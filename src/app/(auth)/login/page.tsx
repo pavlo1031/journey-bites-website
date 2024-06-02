@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { isAxiosError } from 'axios';
 import { type FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { useUserStore } from '@/providers/userProvider';
@@ -14,6 +15,8 @@ import InputField from '@/components/custom/InputField';
 import PasswordInput from '@/components/custom/PasswordInput';
 import { login } from '@/lib/api';
 import { PASSWORD_VALIDATION } from '@/constants';
+import { ApiResponse } from '@/types/apiResponse';
+import StatusCode from '@/types/StatusCode';
 
 const formSchema = z.object({
   email: z.string().email({ message: '非 Email 格式，請重新輸入' }),
@@ -45,8 +48,12 @@ export default function Login() {
       // Replace to /manage/user temporarily, will be changed to ?return_url from query string
       router.replace('/manage/user');
     } catch (error) {
-      // TODO: handle different error by statusCode
-      toast({ title: '登入失敗', description: '請確認您的密碼是否正確', variant: 'error' });
+      if (!isAxiosError(error)) return;
+      if ((error.response?.data as ApiResponse).statusCode === StatusCode.USER_NOT_FOUND) {
+        toast({ title: '登入失敗', description: '請確認您的密碼是否正確', variant: 'error' });
+      } else {
+        toast({ title: '登入失敗', description: '請聯繫客服，或稍後再試', variant: 'error' });
+      }
     } finally {
       setIsLoading(false);
     }
