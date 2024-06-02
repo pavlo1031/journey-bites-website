@@ -7,7 +7,7 @@ type TitleWIthIconProps = {
 
 export default function TitleWIthIcon({ title, icon:Icon }: TitleWIthIconProps) {
   return (
-    <h3 className='flex items-center gap-2 mb-10'>
+    <h3 className='mb-10 flex items-center gap-2'>
       <Icon className='inline-block' size={32}/>
       {title}
     </h3>

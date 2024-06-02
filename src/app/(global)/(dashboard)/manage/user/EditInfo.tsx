@@ -18,7 +18,7 @@ export default function EditInfo() {
   return (
     <>
       <TitleWIthIcon title='個人資料管理' icon={User2Icon} />
-      {isLoading && <Loader2Icon className='h-6 w-6 animate-spin text-primary mx-auto' />}
+      {isLoading && <Loader2Icon className='mx-auto size-6 animate-spin text-primary' />}
       {data &&
         (
           <TabsWithContent

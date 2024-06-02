@@ -16,14 +16,14 @@ export default function Header() {
   // }
 
   return (
-    <header className='sticky z-40 top-0 bg-white border border-b-gray-200'>
-      <div className='w-[67.5%] max-w-[1296px] mx-auto py-5 flex items-center justify-between'>
+    <header className='sticky top-0 z-40 border border-b-gray-200 bg-white'>
+      <div className='mx-auto flex w-[67.5%] max-w-[1296px] items-center justify-between py-5'>
         <div className='flex items-center gap-12'>
           <Link href='/'>
-            <Image className='xs:hidden sm:hidden' src={Logo} alt='Journey Bites' priority />
-            <Image className='xs:block sm:block hidden' src={LogoSm} alt='Journey Bites' priority />
+            <Image className='sm:hidden xs:hidden' src={Logo} alt='Journey Bites' priority />
+            <Image className='hidden sm:block xs:block' src={LogoSm} alt='Journey Bites' priority />
           </Link>
-          <div className='md:flex lg:flex xl:flex 2xl:flex gap-8 hidden'>
+          <div className='hidden gap-8 md:flex lg:flex xl:flex 2xl:flex'>
             <HeaderNav />
             <SearchBar />
           </div>

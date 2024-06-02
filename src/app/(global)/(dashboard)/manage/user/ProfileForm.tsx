@@ -85,7 +85,7 @@ export default function ProfileForm({ displayName, email, bio }: ProfileFormProp
           <CardTitle>個人資料編輯</CardTitle>
         </CardHeader>
         <CardContent className='space-y-4'>
-          <div className='flex gap-3 items-center'>
+          <div className='flex items-center gap-3'>
             <span>帳號</span>
             <span>{email}</span>
           </div>

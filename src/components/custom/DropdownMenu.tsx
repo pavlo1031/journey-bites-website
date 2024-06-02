@@ -10,7 +10,7 @@ export function DropdownMenuComponent({ triggerButton, children }: { triggerButt
       <DropdownMenuTrigger asChild className='focus-visible:outline-none'>
         {triggerButton}
       </DropdownMenuTrigger>
-      <DropdownMenuContent className='p-4 min-w-[196px]' align='start'>
+      <DropdownMenuContent className='min-w-[196px] p-4' align='start'>
         {children}
       </DropdownMenuContent>
     </DropdownMenu>

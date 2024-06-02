@@ -28,10 +28,14 @@ const config = {
       10: '40px',
       11: '44px',
       12: '48px',
+      14: '56px',
+      20: '80px',
+      24: '96px',
+      40: '160px',
     },
     extend: {
       borderWidth: {
-        '10': '10px'
+        '10': '10px',
       },
       colors: {
         border: 'hsl(var(--border))',
@@ -110,20 +114,21 @@ const config = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       screens: {
-        'xs': { 'min': '375px', 'max': '639px' },
-        'sm': { 'min': '640px', 'max': '767px' },
-        'md': { 'min': '768px', 'max': '1023px' },
-        'lg': { 'min': '1024px', 'max': '1279px' },
-        'xl': { 'min': '1280px', 'max': '1534px' },
-        '2xl': { 'min': '1535px' },
+        xs: { min: '375px', max: '639px' },
+        sm: { min: '640px', max: '767px' },
+        md: { min: '768px', max: '1023px' },
+        lg: { min: '1024px', max: '1279px' },
+        xl: { min: '1280px', max: '1534px' },
+        '2xl': { min: '1535px' },
       },
       maxWidth: {
         '1024': '1024px',
         '1280': '1280px',
       },
       boxShadow: {
-        tabs: '0px 2px 8px 0px rgba(39, 41, 55, 0.08)'
-      }
+        tabs: '0px 2px 8px 0px rgba(39, 41, 55, 0.08)',
+        base: '0 4px 6px 0px rgba(0, 0, 0, 0.09)',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

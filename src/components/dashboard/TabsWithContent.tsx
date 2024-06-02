@@ -9,9 +9,9 @@ type TabsWithContentProps = {
 export default function TabsWithContent({ defaultValue, tabs }: TabsWithContentProps) {
   return (
     <Tabs defaultValue={defaultValue}>
-      <TabsList className='text-grey-300 bg-grey p-0 rounded-lg overflow-hidden mb-10 shadow-tabs gap-4'>
+      <TabsList className='mb-10 gap-4 overflow-hidden rounded-lg bg-grey p-0 text-grey-300 shadow-tabs'>
         {tabs.map((tab) => (
-          <TabsTrigger className='data-[state=active]:bg-primary data-[state=active]:text-white py-3 px-4' key={tab.value} value={tab.value}>{tab.label}</TabsTrigger>
+          <TabsTrigger className='px-4 py-3 data-[state=active]:bg-primary data-[state=active]:text-white' key={tab.value} value={tab.value}>{tab.label}</TabsTrigger>
         ))}
       </TabsList>
       {

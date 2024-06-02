@@ -24,7 +24,7 @@ const components: Category[] = [
     id: '1',
     name: '最新文章',
     path: '/articles/new',
-  }
+  },
 ];
 
 // TODO: after API is ready, set categories is required
@@ -33,29 +33,29 @@ export default function HeaderNav({ categories }: { categories?: Category[] }) {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className='[&>svg]:hidden p-0'>探索</NavigationMenuTrigger>
+          <NavigationMenuTrigger className='p-0 [&>svg]:hidden'>
+            探索
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className='shadow-[0px_4px_6px_0px_rgba(0, 0, 0, 0.09)] w-[180px] p-4'>
+            <ul className='w-[180px] p-4 shadow-base'>
               {components.map((component) => (
                 <ListItem
                   key={component.id}
                   title={component.name}
                   href={component.path}
                   className='font-bold'
-                >
-                </ListItem>
+                ></ListItem>
               ))}
             </ul>
             <Separator />
-            <ul className='shadow-[0px_4px_6px_0px_rgba(0, 0, 0, 0.09)] w-[180px] p-4'>
-              <li className='text-sm text-grey-300 py-1 px-2 mb-1'>所有分類</li>
+            <ul className='w-[180px] p-4 shadow-base'>
+              <li className='mb-1 px-2 py-1 text-sm text-grey-300'>所有分類</li>
               {categories?.map((category) => (
                 <ListItem
                   key={category.id}
                   title={category.name}
                   href={category.path}
-                >
-                </ListItem>
+                ></ListItem>
               ))}
             </ul>
           </NavigationMenuContent>
@@ -76,7 +76,7 @@ const ListItem = React.forwardRef<
           ref={ref}
           className={cn(
             'block select-none rounded-lg px-2 py-1 leading-none no-underline outline-none transition-colors hover:bg-primary-100 focus:bg-primary-100',
-            className
+            className,
           )}
           {...props}
         >
