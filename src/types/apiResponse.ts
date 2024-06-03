@@ -23,12 +23,15 @@ export type Category = {
   path: string;
 }
 
+export type SocialLinks = {
+  [key in 'website' | 'instagram' | 'facebook']?: string
+}
+
 export type Profile = {
-  id: string;
   displayName: string;
-  avatarImageUrl: string | null;
-  bio: string | null;
-  socialLinksId: string | null;
+  avatarImageUrl?: string | null;
+  bio?: string | null;
+  socialLinks?: SocialLinks | null;
 }
 
 export type UserResponse = ApiSuccessResponse<{

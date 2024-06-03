@@ -2,7 +2,7 @@ import jsCookie from 'js-cookie';
 import type { AxiosRequestConfig, Method } from 'axios';
 import { JOURNEY_BITES_COOKIE } from '@/constants';
 import { ApiService } from './ApiService';
-import { ApiResponse, UserResponse } from '@/types/apiResponse';
+import { ApiResponse, Profile, UserResponse } from '@/types/apiResponse';
 
 const apiService = new ApiService();
 
@@ -28,4 +28,9 @@ export async function resetPassword(password: string) {
 
 export async function logout() {
   return fetchWithToken<ApiResponse>('post', '/auth/logout');
+}
+
+export async function updateUserProfile(profile: Profile) {
+  const res = await fetchWithToken<ApiResponse>('patch', '/user', { data: profile });
+  return res;
 }
