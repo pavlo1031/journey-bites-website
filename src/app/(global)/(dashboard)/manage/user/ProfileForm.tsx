@@ -39,8 +39,8 @@ type ProfileFormProps = {
 }
 
 export default function ProfileForm({ displayName, email, bio }: ProfileFormProps) {
-  const { mutate: passwordMutation, isPending: isUpdatePasswordPending } = useMutation({ mutationFn: resetPassword });
-  const { mutate: updateProfileMutation, isPending: isUpdateProfilePending } = useMutation({ mutationFn: updateUserProfile });
+  const { mutate: passwordMutate, isPending: isUpdatePasswordPending } = useMutation({ mutationFn: resetPassword });
+  const { mutate: updatePasswordMutate, isPending: isUpdateProfilePending } = useMutation({ mutationFn: updateUserProfile });
 
   const form = useForm<FieldValues>(
     {
@@ -66,7 +66,7 @@ export default function ProfileForm({ displayName, email, bio }: ProfileFormProp
 
   function onSubmit(data: FieldValues) {
     const { displayName, bio } = data;
-    updateProfileMutation({ displayName, bio }, {
+    updatePasswordMutate({ displayName, bio }, {
       onSuccess: () => {
         toast({ title: '更新個人資料成功', variant: 'success' });
       },
@@ -78,7 +78,7 @@ export default function ProfileForm({ displayName, email, bio }: ProfileFormProp
 
   async function onSubmitPassword(data: FieldValues) {
     const { password } = data;
-    passwordMutation(password as string, {
+    passwordMutate(password as string, {
       onSuccess: () => {
         toast({ title: '重設密碼成功', variant: 'success' });
       },

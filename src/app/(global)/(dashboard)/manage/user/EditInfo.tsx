@@ -27,7 +27,7 @@ export default function EditInfo() {
               {
                 value: 'profile',
                 label: '個人資料',
-                content: <ProfileForm displayName={data.profile.displayName || ''} email={data.email || ''} bio={data.profile.bio}/>
+                content: <ProfileForm displayName={data.profile.displayName || ''} email={data.email || ''} bio={data.profile.bio || ''}/>
               },
               {
                 value: 'links',
