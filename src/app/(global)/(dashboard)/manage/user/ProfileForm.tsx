@@ -11,12 +11,11 @@ import { Form } from '@/components/ui/form';
 import TextAreaField from '@/components/custom/TextAreaField';
 import PasswordInput from '@/components/custom/PasswordInput';
 import { PASSWORD_VALIDATION } from '@/constants';
-import { resetPassword } from '@/lib/authApi';
+import { resetPassword, updateUserProfile } from '@/lib/authApi';
 import { toast } from '@/components/ui/use-toast';
 
 const formSchema = z.object({
   displayName: z.string(),
-  email: z.string().email({ message: '非 Email 格式，請重新輸入' }),
   bio: z.optional(z.string().max(500, { message: '最多只能輸入 500 個字' })),
 });
 
@@ -40,7 +39,8 @@ type ProfileFormProps = {
 }
 
 export default function ProfileForm({ displayName, email, bio }: ProfileFormProps) {
-  const passwordMutation = useMutation({ mutationFn: resetPassword });
+  const { mutate: passwordMutate, isPending: isUpdatePasswordPending } = useMutation({ mutationFn: resetPassword });
+  const { mutate: updatePasswordMutate, isPending: isUpdateProfilePending } = useMutation({ mutationFn: updateUserProfile });
 
   const form = useForm<FieldValues>(
     {
@@ -65,17 +65,27 @@ export default function ProfileForm({ displayName, email, bio }: ProfileFormProp
   const { handleSubmit: handleSubmitPassword, control: controlPassword, formState: { isValid: isValidPassword } } = resetPasswordForm;
 
   function onSubmit(data: FieldValues) {
-    console.log(data);
+    const { displayName, bio } = data;
+    updatePasswordMutate({ displayName, bio }, {
+      onSuccess: () => {
+        toast({ title: '更新個人資料成功', variant: 'success' });
+      },
+      onError: () => {
+        toast({ title: '更新個人資料失敗', variant: 'error' });
+      },
+    });
   }
 
   async function onSubmitPassword(data: FieldValues) {
-    try {
-      const { password } = data;
-      passwordMutation.mutate(password as string);
-      toast({ title: '重設密碼成功', variant: 'success' });
-    } catch (error) {
-      toast({ title: '重設密碼失敗，請稍後再試', variant: 'error' });
-    }
+    const { password } = data;
+    passwordMutate(password as string, {
+      onSuccess: () => {
+        toast({ title: '重設密碼成功', variant: 'success' });
+      },
+      onError: () => {
+        toast({ title: '重設密碼失敗', variant: 'error' });
+      },
+    });
   }
 
   return (
@@ -103,7 +113,12 @@ export default function ProfileForm({ displayName, email, bio }: ProfileFormProp
                 label='自我介紹'
                 placeholder='向其他人簡單介紹你自己吧! 可以分享你的創作理念、寫作方向，建議字數為 50 - 150 字為佳！'
               />
-              <Button disabled={!isValid}>儲存個人資料</Button>
+              <Button
+                className='min-w-[130px]'
+                disabled={!isValid || isUpdatePasswordPending}
+                isLoading={isUpdateProfilePending}>
+                儲存個人資料
+              </Button>
             </form>
           </Form>
         </CardContent>
@@ -119,9 +134,9 @@ export default function ProfileForm({ displayName, email, bio }: ProfileFormProp
               <PasswordInput control={controlPassword} name='confirmPassword' label='再輸入一次密碼'/>
               <Button
                 className='min-w-[130px]'
-                disabled={!isValidPassword || passwordMutation.isPending}
+                disabled={!isValidPassword || isUpdatePasswordPending}
                 type='submit'
-                isLoading={passwordMutation.isPending}
+                isLoading={isUpdatePasswordPending}
               >
                 確認修改
               </Button>

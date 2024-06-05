@@ -14,6 +14,8 @@ import InputField from '@/components/custom/InputField';
 import PasswordInput from '@/components/custom/PasswordInput';
 import { login } from '@/lib/api';
 import { PASSWORD_VALIDATION } from '@/constants';
+import StatusCode from '@/types/StatusCode';
+import { handleApiError } from '@/lib/utils';
 
 const formSchema = z.object({
   email: z.string().email({ message: '非 Email 格式，請重新輸入' }),
@@ -45,8 +47,12 @@ export default function Login() {
       // Replace to /manage/user temporarily, will be changed to ?return_url from query string
       router.replace('/manage/user');
     } catch (error) {
-      // TODO: handle different error by statusCode
-      toast({ title: '登入失敗', description: '請確認您的密碼是否正確', variant: 'error' });
+      const errorHandlingConfig = {
+        [StatusCode.USER_NOT_FOUND]: () => {
+          toast({ title: '登入失敗', description: '請確認您的帳號或密碼是否正確', variant: 'error' });
+        }
+      };
+      handleApiError(error, errorHandlingConfig, '登入');
     } finally {
       setIsLoading(false);
     }

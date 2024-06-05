@@ -15,7 +15,7 @@ import { register, verifyEmail } from '@/lib/api';
 import { PASSWORD_VALIDATION } from '@/constants';
 import { useToast } from '@/components/ui/use-toast';
 import StatusCode from '@/types/StatusCode';
-import { ApiResponse } from '@/types/apiResponse';
+import { handleApiError } from '@/lib/utils';
 
 const formSchema = z.object({
   displayName: z.string().min(1, { message: '暱稱是必填欄位' }).max(50, { message: '暱稱不能超過50個字' }),
@@ -56,15 +56,12 @@ export default function EmailRegister() {
       await register({ email, password, displayName });
       router.replace('/login');
     } catch (error) {
-      if (!isAxiosError(error)) return;
-      switch ((error.response?.data as ApiResponse).statusCode) {
-        case StatusCode.USER_ALREADY_EXISTS:
+      const errorHandlingConfig = {
+        [StatusCode.USER_ALREADY_EXISTS]: () => {
           toast({ title: '此帳號已被註冊，請直接登入', variant: 'error' });
-          break;
-        default:
-          toast({ title: '網站錯誤', description: '請聯絡客服，或稍後再試', variant: 'error' });
-          break;
-      }
+        }
+      };
+      handleApiError(error, errorHandlingConfig, '註冊');
     } finally {
       setIsLoading(false);
     }
